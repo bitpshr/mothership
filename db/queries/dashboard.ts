@@ -1,9 +1,10 @@
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { maintenanceRequests, properties, tenants, units } from "@/db/schema";
 import type { ActivityItem, DashboardStats, MonthlyRevenueDatum, UnitStatusBreakdown } from "@/db/schema";
 import { format, subMonths } from "date-fns";
 
 export async function getDashboardStats(): Promise<DashboardStats> {
+  const db = await getDb();
   const [allProperties, allUnits, openRequests] = await Promise.all([
     db.select().from(properties),
     db.select().from(units),
@@ -30,6 +31,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
  * curve for prior months — appropriate for a portfolio demo.
  */
 export async function getMonthlyRevenueSeries(): Promise<MonthlyRevenueDatum[]> {
+  const db = await getDb();
   const allUnits = await db.select().from(units);
   const currentRevenue = allUnits
     .filter((u) => u.status === "occupied")
@@ -52,6 +54,7 @@ export async function getMonthlyRevenueSeries(): Promise<MonthlyRevenueDatum[]> 
 }
 
 export async function getUnitStatusBreakdown(): Promise<UnitStatusBreakdown> {
+  const db = await getDb();
   const allUnits = await db.select().from(units);
   return {
     occupied: allUnits.filter((u) => u.status === "occupied").length,
@@ -61,6 +64,7 @@ export async function getUnitStatusBreakdown(): Promise<UnitStatusBreakdown> {
 }
 
 export async function getRecentActivity(): Promise<ActivityItem[]> {
+  const db = await getDb();
   const [recentMaintenance, allProperties, allTenants] = await Promise.all([
     db.select().from(maintenanceRequests).orderBy(maintenanceRequests.createdAt),
     db.select().from(properties),

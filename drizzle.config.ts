@@ -4,5 +4,5 @@ export default defineConfig({
   schema: "./db/schema.ts",
   out: "./drizzle",
   dialect: "sqlite",
-  dbCredentials: { url: "mothership.db" },
+  dbCredentials: { url: "file:mothership.db" },
 });

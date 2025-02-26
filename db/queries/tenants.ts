@@ -1,10 +1,11 @@
 import { eq } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { properties, tenants, units } from "@/db/schema";
 import type { TenantWithLeaseStatus } from "@/db/schema";
 import { computeLeaseStatus } from "@/lib/formatters";
 
 export async function getTenants(): Promise<TenantWithLeaseStatus[]> {
+  const db = await getDb();
   const rows = await db
     .select({
       tenant: tenants,
@@ -25,6 +26,7 @@ export async function getTenants(): Promise<TenantWithLeaseStatus[]> {
 }
 
 export async function getTenantsByPropertyId(propertyId: string): Promise<TenantWithLeaseStatus[]> {
+  const db = await getDb();
   const rows = await db
     .select({
       tenant: tenants,

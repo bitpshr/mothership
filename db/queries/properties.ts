@@ -1,13 +1,15 @@
 import { eq } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { properties, units } from "@/db/schema";
 import type { Property, PropertySummary } from "@/db/schema";
 
 export async function getProperties(): Promise<Property[]> {
+  const db = await getDb();
   return db.select().from(properties).orderBy(properties.createdAt);
 }
 
 export async function getPropertyById(id: string): Promise<Property | undefined> {
+  const db = await getDb();
   const rows = await db.select().from(properties).where(eq(properties.id, id));
   return rows[0];
 }
@@ -17,6 +19,7 @@ export async function getPropertyById(id: string): Promise<Property | undefined>
  * Requires one extra query per property — acceptable for a small portfolio.
  */
 export async function getPropertySummaries(): Promise<PropertySummary[]> {
+  const db = await getDb();
   const allProperties = await getProperties();
   const allUnits = await db.select().from(units);
 

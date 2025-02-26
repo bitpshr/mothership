@@ -2,11 +2,12 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { tenants, units } from "@/db/schema";
 import { tenantSchema, updateTenantSchema, type TenantFormValues, type UpdateTenantFormValues } from "@/lib/schemas";
 
 export async function createTenant(values: TenantFormValues) {
+  const db = await getDb();
   const validated = tenantSchema.parse(values);
   const id = crypto.randomUUID();
   const now = new Date().toISOString();
@@ -40,6 +41,7 @@ export async function createTenant(values: TenantFormValues) {
 }
 
 export async function updateTenant(id: string, values: UpdateTenantFormValues) {
+  const db = await getDb();
   const validated = updateTenantSchema.parse(values);
 
   await db
@@ -62,6 +64,7 @@ export async function updateTenant(id: string, values: UpdateTenantFormValues) {
 }
 
 export async function deleteTenant(id: string) {
+  const db = await getDb();
   // Find the tenant's unit before deleting
   const tenant = await db.select().from(tenants).where(eq(tenants.id, id)).get();
 

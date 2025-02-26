@@ -1,0 +1,186 @@
+import type { NewMaintenanceRequest, NewProperty, NewTenant, NewUnit } from "./schema";
+
+export const PROPERTIES: NewProperty[] = [
+  {
+    id: "prop_01",
+    name: "Sunset Arms",
+    type: "apartment",
+    street: "2847 Sunset Blvd",
+    city: "Los Angeles",
+    state: "CA",
+    zip: "90026",
+    unitCount: 12,
+    yearBuilt: 1998,
+    imageUrl: null,
+    createdAt: "2022-03-15T00:00:00Z",
+  },
+  {
+    id: "prop_02",
+    name: "Harbor View Condos",
+    type: "condo",
+    street: "415 The Embarcadero",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94105",
+    unitCount: 6,
+    yearBuilt: 2008,
+    imageUrl: null,
+    createdAt: "2022-07-01T00:00:00Z",
+  },
+  {
+    id: "prop_03",
+    name: "The Birchwood",
+    type: "apartment",
+    street: "1120 S Congress Ave",
+    city: "Austin",
+    state: "TX",
+    zip: "78704",
+    unitCount: 10,
+    yearBuilt: 2015,
+    imageUrl: null,
+    createdAt: "2023-01-10T00:00:00Z",
+  },
+  {
+    id: "prop_04",
+    name: "Elm Grove Townhomes",
+    type: "house",
+    street: "3302 NE Alberta St",
+    city: "Portland",
+    state: "OR",
+    zip: "97211",
+    unitCount: 4,
+    yearBuilt: 2005,
+    imageUrl: null,
+    createdAt: "2023-06-20T00:00:00Z",
+  },
+  {
+    id: "prop_05",
+    name: "Northgate Flats",
+    type: "apartment",
+    street: "12020 NE 8th St",
+    city: "Bellevue",
+    state: "WA",
+    zip: "98005",
+    unitCount: 8,
+    yearBuilt: 2019,
+    imageUrl: null,
+    createdAt: "2024-02-01T00:00:00Z",
+  },
+];
+
+export const UNITS: NewUnit[] = [
+  // Sunset Arms — 12 units (9 occupied, 2 vacant, 1 maintenance)
+  { id: "unit_01", propertyId: "prop_01", unitNumber: "1A", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 650, monthlyRent: 220000, tenantId: "ten_01" },
+  { id: "unit_02", propertyId: "prop_01", unitNumber: "1B", status: "occupied", bedrooms: 2, bathrooms: 1, squareFeet: 900, monthlyRent: 285000, tenantId: "ten_02" },
+  { id: "unit_03", propertyId: "prop_01", unitNumber: "1C", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 660, monthlyRent: 222000, tenantId: "ten_03" },
+  { id: "unit_04", propertyId: "prop_01", unitNumber: "2A", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1050, monthlyRent: 320000, tenantId: "ten_04" },
+  { id: "unit_05", propertyId: "prop_01", unitNumber: "2B", status: "vacant", bedrooms: 1, bathrooms: 1, squareFeet: 650, monthlyRent: 225000, tenantId: null },
+  { id: "unit_06", propertyId: "prop_01", unitNumber: "2C", status: "occupied", bedrooms: 3, bathrooms: 2, squareFeet: 1250, monthlyRent: 380000, tenantId: "ten_05" },
+  { id: "unit_07", propertyId: "prop_01", unitNumber: "3A", status: "maintenance", bedrooms: 2, bathrooms: 1, squareFeet: 880, monthlyRent: 278000, tenantId: null },
+  { id: "unit_08", propertyId: "prop_01", unitNumber: "3B", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 640, monthlyRent: 218000, tenantId: "ten_06" },
+  { id: "unit_09", propertyId: "prop_01", unitNumber: "3C", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1020, monthlyRent: 315000, tenantId: "ten_07" },
+  { id: "unit_10", propertyId: "prop_01", unitNumber: "4A", status: "occupied", bedrooms: 3, bathrooms: 2, squareFeet: 1300, monthlyRent: 395000, tenantId: "ten_08" },
+  { id: "unit_11", propertyId: "prop_01", unitNumber: "4B", status: "vacant", bedrooms: 2, bathrooms: 1, squareFeet: 910, monthlyRent: 290000, tenantId: null },
+  { id: "unit_12", propertyId: "prop_01", unitNumber: "4C", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 670, monthlyRent: 224000, tenantId: "ten_09" },
+
+  // Harbor View Condos — 6 units (4 occupied, 1 vacant, 1 maintenance)
+  { id: "unit_13", propertyId: "prop_02", unitNumber: "101", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1100, monthlyRent: 420000, tenantId: "ten_10" },
+  { id: "unit_14", propertyId: "prop_02", unitNumber: "102", status: "vacant", bedrooms: 1, bathrooms: 1, squareFeet: 780, monthlyRent: 310000, tenantId: null },
+  { id: "unit_15", propertyId: "prop_02", unitNumber: "201", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1150, monthlyRent: 445000, tenantId: "ten_11" },
+  { id: "unit_16", propertyId: "prop_02", unitNumber: "202", status: "occupied", bedrooms: 3, bathrooms: 2, squareFeet: 1400, monthlyRent: 580000, tenantId: "ten_12" },
+  { id: "unit_17", propertyId: "prop_02", unitNumber: "301", status: "maintenance", bedrooms: 2, bathrooms: 2, squareFeet: 1120, monthlyRent: 450000, tenantId: null },
+  { id: "unit_18", propertyId: "prop_02", unitNumber: "302", status: "occupied", bedrooms: 3, bathrooms: 3, squareFeet: 1550, monthlyRent: 620000, tenantId: "ten_13" },
+
+  // The Birchwood — 10 units (8 occupied, 1 vacant, 1 maintenance)
+  { id: "unit_19", propertyId: "prop_03", unitNumber: "A1", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 720, monthlyRent: 195000, tenantId: "ten_14" },
+  { id: "unit_20", propertyId: "prop_03", unitNumber: "A2", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1000, monthlyRent: 258000, tenantId: "ten_15" },
+  { id: "unit_21", propertyId: "prop_03", unitNumber: "A3", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 710, monthlyRent: 192000, tenantId: "ten_16" },
+  { id: "unit_22", propertyId: "prop_03", unitNumber: "B1", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1010, monthlyRent: 260000, tenantId: "ten_17" },
+  { id: "unit_23", propertyId: "prop_03", unitNumber: "B2", status: "vacant", bedrooms: 1, bathrooms: 1, squareFeet: 700, monthlyRent: 190000, tenantId: null },
+  { id: "unit_24", propertyId: "prop_03", unitNumber: "B3", status: "occupied", bedrooms: 3, bathrooms: 2, squareFeet: 1300, monthlyRent: 320000, tenantId: "ten_18" },
+  { id: "unit_25", propertyId: "prop_03", unitNumber: "C1", status: "occupied", bedrooms: 2, bathrooms: 1, squareFeet: 950, monthlyRent: 242000, tenantId: "ten_19" },
+  { id: "unit_26", propertyId: "prop_03", unitNumber: "C2", status: "maintenance", bedrooms: 2, bathrooms: 2, squareFeet: 1000, monthlyRent: 255000, tenantId: null },
+  { id: "unit_27", propertyId: "prop_03", unitNumber: "C3", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 720, monthlyRent: 198000, tenantId: "ten_20" },
+  { id: "unit_28", propertyId: "prop_03", unitNumber: "D1", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1050, monthlyRent: 268000, tenantId: "ten_21" },
+
+  // Elm Grove Townhomes — 4 units (3 occupied, 1 vacant)
+  { id: "unit_29", propertyId: "prop_04", unitNumber: "TH1", status: "occupied", bedrooms: 3, bathrooms: 2.5, squareFeet: 1600, monthlyRent: 298000, tenantId: "ten_22" },
+  { id: "unit_30", propertyId: "prop_04", unitNumber: "TH2", status: "occupied", bedrooms: 3, bathrooms: 2.5, squareFeet: 1620, monthlyRent: 302000, tenantId: "ten_23" },
+  { id: "unit_31", propertyId: "prop_04", unitNumber: "TH3", status: "vacant", bedrooms: 2, bathrooms: 2, squareFeet: 1250, monthlyRent: 258000, tenantId: null },
+  { id: "unit_32", propertyId: "prop_04", unitNumber: "TH4", status: "occupied", bedrooms: 3, bathrooms: 2.5, squareFeet: 1590, monthlyRent: 295000, tenantId: "ten_24" },
+
+  // Northgate Flats — 8 units (6 occupied, 1 vacant, 1 maintenance)
+  { id: "unit_33", propertyId: "prop_05", unitNumber: "101", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 750, monthlyRent: 252000, tenantId: "ten_25" },
+  { id: "unit_34", propertyId: "prop_05", unitNumber: "102", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1050, monthlyRent: 330000, tenantId: "ten_26" },
+  { id: "unit_35", propertyId: "prop_05", unitNumber: "201", status: "occupied", bedrooms: 1, bathrooms: 1, squareFeet: 760, monthlyRent: 255000, tenantId: "ten_27" },
+  { id: "unit_36", propertyId: "prop_05", unitNumber: "202", status: "vacant", bedrooms: 2, bathrooms: 2, squareFeet: 1060, monthlyRent: 335000, tenantId: null },
+  { id: "unit_37", propertyId: "prop_05", unitNumber: "301", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1080, monthlyRent: 338000, tenantId: "ten_28" },
+  { id: "unit_38", propertyId: "prop_05", unitNumber: "302", status: "maintenance", bedrooms: 1, bathrooms: 1, squareFeet: 740, monthlyRent: 248000, tenantId: null },
+  { id: "unit_39", propertyId: "prop_05", unitNumber: "401", status: "occupied", bedrooms: 3, bathrooms: 2, squareFeet: 1350, monthlyRent: 420000, tenantId: "ten_29" },
+  { id: "unit_40", propertyId: "prop_05", unitNumber: "402", status: "occupied", bedrooms: 2, bathrooms: 2, squareFeet: 1070, monthlyRent: 332000, tenantId: "ten_30" },
+];
+
+export const TENANTS: NewTenant[] = [
+  // Sunset Arms
+  { id: "ten_01", unitId: "unit_01", propertyId: "prop_01", firstName: "Marcus", lastName: "Webb", email: "marcus.webb@email.com", phone: "(213) 555-0142", leaseStart: "2024-02-01", leaseEnd: "2025-01-31", monthlyRent: 220000, securityDeposit: 440000, createdAt: "2024-02-01T00:00:00Z" },
+  { id: "ten_02", unitId: "unit_02", propertyId: "prop_01", firstName: "Priya", lastName: "Sharma", email: "priya.sharma@email.com", phone: "(213) 555-0287", leaseStart: "2024-06-01", leaseEnd: "2026-05-31", monthlyRent: 285000, securityDeposit: 570000, createdAt: "2024-06-01T00:00:00Z" },
+  { id: "ten_03", unitId: "unit_03", propertyId: "prop_01", firstName: "James", lastName: "Okafor", email: "james.okafor@email.com", phone: "(213) 555-0391", leaseStart: "2025-03-15", leaseEnd: "2026-03-14", monthlyRent: 222000, securityDeposit: 444000, createdAt: "2025-03-15T00:00:00Z" },
+  { id: "ten_04", unitId: "unit_04", propertyId: "prop_01", firstName: "Sofia", lastName: "Reyes", email: "sofia.reyes@email.com", phone: "(213) 555-0418", leaseStart: "2024-10-01", leaseEnd: "2026-09-30", monthlyRent: 320000, securityDeposit: 640000, createdAt: "2024-10-01T00:00:00Z" },
+  { id: "ten_05", unitId: "unit_06", propertyId: "prop_01", firstName: "Daniel", lastName: "Park", email: "daniel.park@email.com", phone: "(213) 555-0562", leaseStart: "2025-01-01", leaseEnd: "2026-04-01", monthlyRent: 380000, securityDeposit: 760000, createdAt: "2025-01-01T00:00:00Z" },
+  { id: "ten_06", unitId: "unit_08", propertyId: "prop_01", firstName: "Aisha", lastName: "Johnson", email: "aisha.johnson@email.com", phone: "(213) 555-0634", leaseStart: "2025-08-01", leaseEnd: "2026-07-31", monthlyRent: 218000, securityDeposit: 436000, createdAt: "2025-08-01T00:00:00Z" },
+  { id: "ten_07", unitId: "unit_09", propertyId: "prop_01", firstName: "Liam", lastName: "Torres", email: "liam.torres@email.com", phone: "(213) 555-0755", leaseStart: "2024-04-15", leaseEnd: "2026-04-14", monthlyRent: 315000, securityDeposit: 630000, createdAt: "2024-04-15T00:00:00Z" },
+  { id: "ten_08", unitId: "unit_10", propertyId: "prop_01", firstName: "Nina", lastName: "Patel", email: "nina.patel@email.com", phone: "(213) 555-0812", leaseStart: "2025-05-01", leaseEnd: "2026-04-30", monthlyRent: 395000, securityDeposit: 790000, createdAt: "2025-05-01T00:00:00Z" },
+  { id: "ten_09", unitId: "unit_12", propertyId: "prop_01", firstName: "Owen", lastName: "Fitzgerald", email: "owen.fitz@email.com", phone: "(213) 555-0923", leaseStart: "2025-11-01", leaseEnd: "2026-10-31", monthlyRent: 224000, securityDeposit: 448000, createdAt: "2025-11-01T00:00:00Z" },
+
+  // Harbor View
+  { id: "ten_10", unitId: "unit_13", propertyId: "prop_02", firstName: "Rachel", lastName: "Chen", email: "rachel.chen@email.com", phone: "(415) 555-0134", leaseStart: "2024-09-01", leaseEnd: "2026-08-31", monthlyRent: 420000, securityDeposit: 840000, createdAt: "2024-09-01T00:00:00Z" },
+  { id: "ten_11", unitId: "unit_15", propertyId: "prop_02", firstName: "Andre", lastName: "Moreau", email: "andre.moreau@email.com", phone: "(415) 555-0265", leaseStart: "2025-02-01", leaseEnd: "2026-03-05", monthlyRent: 445000, securityDeposit: 890000, createdAt: "2025-02-01T00:00:00Z" },
+  { id: "ten_12", unitId: "unit_16", propertyId: "prop_02", firstName: "Keiko", lastName: "Tanaka", email: "keiko.tanaka@email.com", phone: "(415) 555-0376", leaseStart: "2023-12-01", leaseEnd: "2025-11-30", monthlyRent: 580000, securityDeposit: 1160000, createdAt: "2023-12-01T00:00:00Z" },
+  { id: "ten_13", unitId: "unit_18", propertyId: "prop_02", firstName: "Carlos", lastName: "Mendez", email: "carlos.mendez@email.com", phone: "(415) 555-0481", leaseStart: "2025-07-01", leaseEnd: "2026-06-30", monthlyRent: 620000, securityDeposit: 1240000, createdAt: "2025-07-01T00:00:00Z" },
+
+  // The Birchwood
+  { id: "ten_14", unitId: "unit_19", propertyId: "prop_03", firstName: "Mia", lastName: "Anderson", email: "mia.anderson@email.com", phone: "(512) 555-0147", leaseStart: "2025-04-01", leaseEnd: "2026-03-31", monthlyRent: 195000, securityDeposit: 390000, createdAt: "2025-04-01T00:00:00Z" },
+  { id: "ten_15", unitId: "unit_20", propertyId: "prop_03", firstName: "Ben", lastName: "Nakamura", email: "ben.nakamura@email.com", phone: "(512) 555-0258", leaseStart: "2024-11-01", leaseEnd: "2026-10-31", monthlyRent: 258000, securityDeposit: 516000, createdAt: "2024-11-01T00:00:00Z" },
+  { id: "ten_16", unitId: "unit_21", propertyId: "prop_03", firstName: "Zoe", lastName: "Williams", email: "zoe.williams@email.com", phone: "(512) 555-0369", leaseStart: "2025-01-15", leaseEnd: "2026-01-14", monthlyRent: 192000, securityDeposit: 384000, createdAt: "2025-01-15T00:00:00Z" },
+  { id: "ten_17", unitId: "unit_22", propertyId: "prop_03", firstName: "Ethan", lastName: "Brooks", email: "ethan.brooks@email.com", phone: "(512) 555-0472", leaseStart: "2024-08-01", leaseEnd: "2026-07-31", monthlyRent: 260000, securityDeposit: 520000, createdAt: "2024-08-01T00:00:00Z" },
+  { id: "ten_18", unitId: "unit_24", propertyId: "prop_03", firstName: "Layla", lastName: "Hassan", email: "layla.hassan@email.com", phone: "(512) 555-0583", leaseStart: "2025-06-01", leaseEnd: "2026-05-31", monthlyRent: 320000, securityDeposit: 640000, createdAt: "2025-06-01T00:00:00Z" },
+  { id: "ten_19", unitId: "unit_25", propertyId: "prop_03", firstName: "Tyler", lastName: "Morgan", email: "tyler.morgan@email.com", phone: "(512) 555-0694", leaseStart: "2025-09-01", leaseEnd: "2026-08-31", monthlyRent: 242000, securityDeposit: 484000, createdAt: "2025-09-01T00:00:00Z" },
+  { id: "ten_20", unitId: "unit_27", propertyId: "prop_03", firstName: "Isabella", lastName: "Russo", email: "isabella.russo@email.com", phone: "(512) 555-0715", leaseStart: "2024-03-01", leaseEnd: "2026-02-28", monthlyRent: 198000, securityDeposit: 396000, createdAt: "2024-03-01T00:00:00Z" },
+  { id: "ten_21", unitId: "unit_28", propertyId: "prop_03", firstName: "Jordan", lastName: "Kim", email: "jordan.kim@email.com", phone: "(512) 555-0826", leaseStart: "2025-10-01", leaseEnd: "2026-09-30", monthlyRent: 268000, securityDeposit: 536000, createdAt: "2025-10-01T00:00:00Z" },
+
+  // Elm Grove
+  { id: "ten_22", unitId: "unit_29", propertyId: "prop_04", firstName: "Hannah", lastName: "Scott", email: "hannah.scott@email.com", phone: "(503) 555-0139", leaseStart: "2024-07-01", leaseEnd: "2026-06-30", monthlyRent: 298000, securityDeposit: 596000, createdAt: "2024-07-01T00:00:00Z" },
+  { id: "ten_23", unitId: "unit_30", propertyId: "prop_04", firstName: "Diego", lastName: "Vargas", email: "diego.vargas@email.com", phone: "(503) 555-0248", leaseStart: "2025-02-15", leaseEnd: "2026-02-14", monthlyRent: 302000, securityDeposit: 604000, createdAt: "2025-02-15T00:00:00Z" },
+  { id: "ten_24", unitId: "unit_32", propertyId: "prop_04", firstName: "Chloe", lastName: "Bennett", email: "chloe.bennett@email.com", phone: "(503) 555-0357", leaseStart: "2025-05-01", leaseEnd: "2026-04-30", monthlyRent: 295000, securityDeposit: 590000, createdAt: "2025-05-01T00:00:00Z" },
+
+  // Northgate Flats
+  { id: "ten_25", unitId: "unit_33", propertyId: "prop_05", firstName: "Alex", lastName: "Rivera", email: "alex.rivera@email.com", phone: "(425) 555-0152", leaseStart: "2025-03-01", leaseEnd: "2026-02-28", monthlyRent: 252000, securityDeposit: 504000, createdAt: "2025-03-01T00:00:00Z" },
+  { id: "ten_26", unitId: "unit_34", propertyId: "prop_05", firstName: "Fatima", lastName: "Al-Rashid", email: "fatima.alrashid@email.com", phone: "(425) 555-0263", leaseStart: "2024-12-01", leaseEnd: "2025-11-30", monthlyRent: 330000, securityDeposit: 660000, createdAt: "2024-12-01T00:00:00Z" },
+  { id: "ten_27", unitId: "unit_35", propertyId: "prop_05", firstName: "Noah", lastName: "Campbell", email: "noah.campbell@email.com", phone: "(425) 555-0374", leaseStart: "2025-08-01", leaseEnd: "2026-07-31", monthlyRent: 255000, securityDeposit: 510000, createdAt: "2025-08-01T00:00:00Z" },
+  { id: "ten_28", unitId: "unit_37", propertyId: "prop_05", firstName: "Grace", lastName: "O'Brien", email: "grace.obrien@email.com", phone: "(425) 555-0485", leaseStart: "2025-01-01", leaseEnd: "2026-06-30", monthlyRent: 338000, securityDeposit: 676000, createdAt: "2025-01-01T00:00:00Z" },
+  { id: "ten_29", unitId: "unit_39", propertyId: "prop_05", firstName: "Samuel", lastName: "Adeyemi", email: "samuel.adeyemi@email.com", phone: "(425) 555-0596", leaseStart: "2024-05-01", leaseEnd: "2026-04-30", monthlyRent: 420000, securityDeposit: 840000, createdAt: "2024-05-01T00:00:00Z" },
+  { id: "ten_30", unitId: "unit_40", propertyId: "prop_05", firstName: "Lily", lastName: "Zhang", email: "lily.zhang@email.com", phone: "(425) 555-0607", leaseStart: "2025-11-01", leaseEnd: "2026-10-31", monthlyRent: 332000, securityDeposit: 664000, createdAt: "2025-11-01T00:00:00Z" },
+];
+
+export const MAINTENANCE: NewMaintenanceRequest[] = [
+  { id: "maint_01", propertyId: "prop_01", unitId: "unit_01", tenantId: "ten_01", title: "HVAC not cooling", description: "The air conditioning unit stopped working. Apartment is 85\u00B0F.", priority: "high", status: "open", createdAt: "2026-02-20T14:30:00Z", updatedAt: "2026-02-20T14:30:00Z", resolvedAt: null },
+  { id: "maint_02", propertyId: "prop_01", unitId: "unit_02", tenantId: "ten_02", title: "Leaking faucet in kitchen", description: "The kitchen faucet has been dripping constantly for about a week.", priority: "medium", status: "in_progress", createdAt: "2026-02-15T09:00:00Z", updatedAt: "2026-02-18T11:00:00Z", resolvedAt: null },
+  { id: "maint_03", propertyId: "prop_01", unitId: "unit_04", tenantId: "ten_04", title: "Broken window latch", description: "The bedroom window latch is broken and the window won't stay closed.", priority: "low", status: "open", createdAt: "2026-02-22T16:00:00Z", updatedAt: "2026-02-22T16:00:00Z", resolvedAt: null },
+  { id: "maint_04", propertyId: "prop_01", unitId: "unit_06", tenantId: "ten_05", title: "Sewage backup in bathroom", description: "Toilet is backing up. Water on floor. Need emergency plumber.", priority: "emergency", status: "resolved", createdAt: "2026-01-30T07:15:00Z", updatedAt: "2026-01-30T14:00:00Z", resolvedAt: "2026-01-30T14:00:00Z" },
+  { id: "maint_05", propertyId: "prop_01", unitId: "unit_08", tenantId: "ten_06", title: "Light fixture out in hallway", description: "The overhead light in the hallway is out. Replacement bulb didn't help.", priority: "low", status: "resolved", createdAt: "2026-01-10T10:00:00Z", updatedAt: "2026-01-12T15:00:00Z", resolvedAt: "2026-01-12T15:00:00Z" },
+  { id: "maint_06", propertyId: "prop_01", unitId: "unit_09", tenantId: "ten_07", title: "Dishwasher not draining", description: "Dishwasher fills with water but won't drain. Already tried resetting.", priority: "medium", status: "in_progress", createdAt: "2026-02-10T12:30:00Z", updatedAt: "2026-02-12T09:00:00Z", resolvedAt: null },
+  { id: "maint_07", propertyId: "prop_02", unitId: "unit_13", tenantId: "ten_10", title: "Balcony door sticking", description: "The sliding glass balcony door is very hard to open and close.", priority: "low", status: "open", createdAt: "2026-02-19T15:00:00Z", updatedAt: "2026-02-19T15:00:00Z", resolvedAt: null },
+  { id: "maint_08", propertyId: "prop_02", unitId: "unit_15", tenantId: "ten_11", title: "Gas smell in kitchen", description: "Faint smell of gas near the stove. Already turned off the main valve.", priority: "emergency", status: "resolved", createdAt: "2026-02-05T20:00:00Z", updatedAt: "2026-02-05T22:30:00Z", resolvedAt: "2026-02-05T22:30:00Z" },
+  { id: "maint_09", propertyId: "prop_02", unitId: "unit_16", tenantId: "ten_12", title: "Thermostat malfunctioning", description: "Smart thermostat showing error E4. Heat not coming on at night.", priority: "high", status: "open", createdAt: "2026-02-21T08:00:00Z", updatedAt: "2026-02-21T08:00:00Z", resolvedAt: null },
+  { id: "maint_10", propertyId: "prop_02", unitId: "unit_18", tenantId: "ten_13", title: "Water stain on ceiling", description: "Large water stain appeared on bedroom ceiling after last week's rain.", priority: "high", status: "in_progress", createdAt: "2026-02-14T13:00:00Z", updatedAt: "2026-02-16T10:30:00Z", resolvedAt: null },
+  { id: "maint_11", propertyId: "prop_03", unitId: "unit_19", tenantId: "ten_14", title: "Cabinet door hinge broken", description: "The upper cabinet door above the sink keeps falling off its hinge.", priority: "low", status: "closed", createdAt: "2026-01-05T11:00:00Z", updatedAt: "2026-01-08T14:00:00Z", resolvedAt: "2026-01-08T14:00:00Z" },
+  { id: "maint_12", propertyId: "prop_03", unitId: "unit_20", tenantId: "ten_15", title: "No hot water", description: "Water heater appears to have failed. No hot water since yesterday morning.", priority: "emergency", status: "resolved", createdAt: "2026-02-08T07:30:00Z", updatedAt: "2026-02-08T15:00:00Z", resolvedAt: "2026-02-08T15:00:00Z" },
+  { id: "maint_13", propertyId: "prop_03", unitId: "unit_22", tenantId: "ten_17", title: "Pest issue \u2014 cockroaches", description: "Seeing cockroaches in the kitchen. Started 3 days ago.", priority: "high", status: "open", createdAt: "2026-02-23T09:00:00Z", updatedAt: "2026-02-23T09:00:00Z", resolvedAt: null },
+  { id: "maint_14", propertyId: "prop_03", unitId: "unit_24", tenantId: "ten_18", title: "Washer making loud noise", description: "In-unit washer makes a very loud banging sound during spin cycle.", priority: "medium", status: "open", createdAt: "2026-02-17T14:00:00Z", updatedAt: "2026-02-17T14:00:00Z", resolvedAt: null },
+  { id: "maint_15", propertyId: "prop_04", unitId: "unit_29", tenantId: "ten_22", title: "Garage door opener not working", description: "Remote control no longer opens garage. Replaced batteries, same issue.", priority: "medium", status: "resolved", createdAt: "2026-02-01T16:00:00Z", updatedAt: "2026-02-03T11:00:00Z", resolvedAt: "2026-02-03T11:00:00Z" },
+  { id: "maint_16", propertyId: "prop_04", unitId: "unit_30", tenantId: "ten_23", title: "Fence panel missing", description: "Back fence is missing a panel after last week's windstorm.", priority: "medium", status: "in_progress", createdAt: "2026-02-12T10:00:00Z", updatedAt: "2026-02-15T09:00:00Z", resolvedAt: null },
+  { id: "maint_17", propertyId: "prop_05", unitId: "unit_33", tenantId: "ten_25", title: "Smoke detector low battery", description: "Smoke detector keeps beeping. Need ladder to reach it.", priority: "low", status: "open", createdAt: "2026-02-24T11:30:00Z", updatedAt: "2026-02-24T11:30:00Z", resolvedAt: null },
+  { id: "maint_18", propertyId: "prop_05", unitId: "unit_34", tenantId: "ten_26", title: "Broken intercom", description: "Building intercom for this unit doesn't ring. Can't let guests in.", priority: "medium", status: "open", createdAt: "2026-02-18T13:00:00Z", updatedAt: "2026-02-18T13:00:00Z", resolvedAt: null },
+  { id: "maint_19", propertyId: "prop_05", unitId: "unit_37", tenantId: "ten_28", title: "Dryer not heating", description: "Clothes come out still damp. Dryer runs but no heat.", priority: "medium", status: "in_progress", createdAt: "2026-02-11T15:00:00Z", updatedAt: "2026-02-13T10:00:00Z", resolvedAt: null },
+  { id: "maint_20", propertyId: "prop_05", unitId: "unit_39", tenantId: "ten_29", title: "Elevator stuck on floor 3", description: "Unit elevator has been stuck on floor 3. Using stairs but this is urgent.", priority: "emergency", status: "in_progress", createdAt: "2026-02-24T08:00:00Z", updatedAt: "2026-02-24T08:45:00Z", resolvedAt: null },
+];

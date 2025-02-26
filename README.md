@@ -1,4 +1,4 @@
-<img src="app/icon.svg" width="28" align="left" style="margin-right: 8px;" />
+<img src="app/icon.svg" width="48" height="48" alt="Mothership icon" />
 
 # MOTHERSHIP
 

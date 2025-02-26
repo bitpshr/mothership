@@ -2,6 +2,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { GlobalSearch } from "@/components/layout/GlobalSearch";
 import { Separator } from "@/components/ui/separator";
+import { DemoBanner } from "@/components/DemoBanner";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,6 +23,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
         <main className="flex-1 overflow-auto">{children}</main>
       </SidebarInset>
+      <DemoBanner />
     </SidebarProvider>
   );
 }

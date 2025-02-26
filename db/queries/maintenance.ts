@@ -1,5 +1,5 @@
 import { desc, eq } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { maintenanceRequests, properties, tenants, units } from "@/db/schema";
 import type { MaintenanceRequest } from "@/db/schema";
 
@@ -10,6 +10,7 @@ export type MaintenanceRequestWithContext = MaintenanceRequest & {
 };
 
 export async function getMaintenanceRequests(): Promise<MaintenanceRequestWithContext[]> {
+  const db = await getDb();
   const rows = await db
     .select({
       request: maintenanceRequests,
@@ -35,6 +36,7 @@ export async function getMaintenanceRequests(): Promise<MaintenanceRequestWithCo
 export async function getMaintenanceByPropertyId(
   propertyId: string,
 ): Promise<MaintenanceRequestWithContext[]> {
+  const db = await getDb();
   const rows = await db
     .select({
       request: maintenanceRequests,

@@ -1,7 +1,7 @@
 "use server";
 
 import { like, or } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { properties, tenants, maintenanceRequests } from "@/db/schema";
 
 export type SearchResult = {
@@ -15,6 +15,7 @@ export type SearchResult = {
 export async function searchAll(query: string): Promise<SearchResult[]> {
   if (!query || query.trim().length < 2) return [];
 
+  const db = await getDb();
   const q = `%${query.trim()}%`;
 
   const [propResults, tenantResults, mainResults] = await Promise.all([

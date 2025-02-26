@@ -2,11 +2,12 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { properties } from "@/db/schema";
 import { propertySchema, type PropertyFormValues } from "@/lib/schemas";
 
 export async function createProperty(values: PropertyFormValues) {
+  const db = await getDb();
   const validated = propertySchema.parse(values);
   const id = crypto.randomUUID();
 
@@ -21,6 +22,7 @@ export async function createProperty(values: PropertyFormValues) {
 }
 
 export async function updateProperty(id: string, values: Partial<PropertyFormValues>) {
+  const db = await getDb();
   const validated = propertySchema.partial().parse(values);
 
   await db.update(properties).set(validated).where(eq(properties.id, id));
@@ -30,6 +32,7 @@ export async function updateProperty(id: string, values: Partial<PropertyFormVal
 }
 
 export async function deleteProperty(id: string) {
+  const db = await getDb();
   await db.delete(properties).where(eq(properties.id, id));
   revalidatePath("/properties");
 }
